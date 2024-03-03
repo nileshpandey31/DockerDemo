@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Order</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script  type="text/javascript">
+        $(document).ready(function()
+        {
+            var ctr=0;
+            $("#b1").click(function(){
+            var pname=$("#pizzaname").val();
+            if(pname=="")
+            {
+                alert("pls select the pizza!");
+                return;
+            }
+
+            var ptype=$(":radio[name='ptype']:checked").val();
+            if(ptype==undefined)
+            {
+                alert("pls select the pizza type!!");
+                return;
+            }
+
+            var psize=$(":radio[name='psize']:checked").val();
+            if(psize==undefined)
+            {
+                alert("pls select the pizza size!!");
+                return;
+            }
+
+            var ptop=$(":checkbox[name='ptop']:checked").val();
+            if(ptop==undefined)
+            {
+                alert("pls select the pizza topping!!");
+                return;
+            }
+
+            var q=$("#quan").val();
+            if(q=="")
+            {
+                alert("please select the quantity!!");
+                return;
+            }
+
+            alert(pname+" "+psize+" "+ptype +"" +ptop +""+q);
+            $("#ordertable").append("<tr><td>"+pname+"</td><td>"+ptype+"</td><td>"+psize+"</td><td>"+ptop+"</td><td>"+q+"</td></tr>");
+                  ctr++;
+           
+             $('#corder').html("<b>"+"Count of Order: "+ctr+" </b>");
+            })
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                pizza name :
+            </td>
+            <td>
+                <select  id="pizzaname">
+                    <option value="">Select</option>
+                    <option value="Veg Extravaganza">Veg Extravaganza</option>
+                    <option value="Cloud 9">Cloud 9</option>
+                    <option value="Chef's Veg Wonder">Chef's Veg Wonder</option>
+                    <option value="Peppy Paneer">Peppy Paneer</option>
+                    <option value="Non Veg Supreme">Non Veg Supreme</option>
+                    <option value="Chicken Dominator">Chicken Dominator</option>
+                </select>
+              
+            </td>
+        </tr>
+        <tr>
+            <td>
+                pizza type :
+            </td>
+            <td>
+                <input type="radio" name="ptype" value="Veg" >Veg
+                <input type="radio" name="ptype" value="Non-Veg">Non Veg
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                pizza size :
+            </td>
+            <td>
+                <input type="radio" name="psize" value="small">small
+                <input type="radio" name="psize" value="medium">medium
+                <input type="radio" name="psize" value="large">large
+            </td>
+        </tr>
+        <tr>
+            <td>
+                pizza toppings :
+            </td>
+            <td>
+                <input type="checkbox" name="ptop" value="Pepperoni">Pepperoni
+                <input type="checkbox" name="ptop" value="Mushrooms">Mushrooms
+                <input type="checkbox" name="ptop" value="Sausage">Sausage
+                <input type="checkbox" name="ptop" value="Extra cheese">Extra cheese
+
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                quantity ;
+            </td>
+            <td>
+                <input type="number"  id="quan">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="b1">place order</button>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <span id="corder"></span>
+    <table id="ordertable" border="1">
+        <tr>
+            <th>pname</th>
+            <th>ptype</th>
+            <th>psize</th>
+            <th>ptop</th>
+            <th>quantity</th>
+        </tr>
+    </table>
+</body>
+</html>
